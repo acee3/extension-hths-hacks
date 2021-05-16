@@ -127,8 +127,8 @@ chrome.runtime.onMessage.addListener(
     if (request.type == "alarm") {
       let date = request.date;
       let time = request.time;
-      let teacher = "Mr. B";
-      let assignment = "Flood Fill";
+      let teacher = request.teacher;
+      let assignment = request.text;
       createAlarm(parseInt(date.substring(0,4)), parseInt(date.substring(5,7))-1, parseInt(date.substring(8,10)), parseInt(time.substring(0,2)), parseInt(time.substring(3)), teacher, assignment)
     }
     if (request.type == "flip-reminders") {
