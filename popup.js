@@ -18,18 +18,20 @@ document.getElementById("reminders").addEventListener("click", function() {
 document.getElementById("add-reminder").addEventListener("click", function() {
   let date = document.getElementById("date").value;
   let time = document.getElementById("time").value;
-  chrome.runtime.sendMessage({type: 'alarm', date: date, time: time})
+  let text = document.getElementById("text").value;
+  let teacher = document.getElementById("teacher").value;
+  chrome.runtime.sendMessage({type: 'alarm', date: date, time: time, text: text, teacher: teacher})
 })
 
 // document.getElementById("auto-turn-in").addEventListener("click", function() {
 //   autoTurnIn = !autoTurnIn;
 // })
 
-document.getElementById("sign-out").addEventListener("click", function() {
-  // signedIn = !signedIn;
-  document.getElementById("home").style.display='none';
-  document.getElementById("login").style.display='block';
-})
+// document.getElementById("sign-out").addEventListener("click", function() {
+//   // signedIn = !signedIn;
+//   document.getElementById("home").style.display='none';
+//   document.getElementById("login").style.display='block';
+// })
 
 document.getElementById("sign-in").addEventListener("click", function() {
   // signedIn = !signedIn;
