@@ -4,22 +4,40 @@
     "manifest_version": 2,
     "description": "Notify the user of upcoming Google Classroom assignments.",
     "icons": {
-      "48": "notification.ico"
+        "48": "notification.ico"
     },
     "content_scripts": [
         {
-            "matches": ["<all_urls>"],
-            "js": ["content.js"]
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "jquery-3.5.1.min.js",
+                "content.js"
+            ]
         }
     ],
+    "content_security_policy": "script-src 'self' https://apis.google.com/; object-src 'self'",
     "browser_action": {
         "default_title": "Test",
         "default_popup": "popup.html"
     },
     "background": {
-        "scripts": ["background.js"]
+        "page": "background.html",
+        "persistent": false
     },
+    "oauth2": {
+        "client_id": "287729568001-rtl2updem083phoqc3tpil51vrqtab5t.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/classroom.courses.readonly"
+        ]
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgJI1TdtGzp/L32ELfszz2iXwKQX2YrzXenN2lf4GY5066IMxYvqRcG0lQXLYsQGxiv8aajr2E8nSyb8B3CC7R5uvJYNeJk0goegzCgads0sJWkCtnO6w+wpjnyv+Wt6SD4rzHKOv7QdjOLQqK8XhpUft35EbTqjsjna4tFiKDLFa++9h0c9vvsaFQI+dQyjlA9WZGcASJBFOZwS7NYKlsvjzonEVO7w2F7coThSGjGUAfMKPwksJrLKcC76sqJ4WfS56gbmlOu8hkiACAppiSXbtxRSRI5TLtucgTfSeyEKxkOgDvCTaKaocp/l3Cr37KPH7qpJdmHrEqGcT39gylQIDAQAB",
     "permissions": [
-        "tabs", "webNavigation", "notifications", "alarms"
+        "tabs",
+        "webNavigation",
+        "notifications",
+        "alarms",
+        "identity"
     ]
 }
